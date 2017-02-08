@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Job Board</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<body>
+    <div class="container">
+      <h1>Job Board</h1>
+      <h3>Please describe the job summary</h3>
+      <form action="/joblist" method='post'>
+
+        <div class="form-group">
+          <label for='title'>Job Title:</label>
+          <input id="title" name='title' type="text" class="form-control">
+
+          <label for='description'>Job Description</label>
+          <textarea id="description" name="description" rows="5" type="text" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+          <h3>Please type your contact info</h3>
+            <label for='name'>Your Name:</label>
+            <input id="name" name='name' type="text" class="form-control">
+            <label for='email'>Your Email:</label>
+            <input id="email" name='email' type="email" class="form-control">
+            <label for='phone'>Your Phone Number:</label>
+            <input id="phone" name='phone' type="number" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success">POST</button>
+
+      </form>
+      <form action="/delete_JobOpening" method='post'>
+      <button type="submit" class="btn btn-success">Delete jobs</button>
+      </form>
+
+
+
+      {% if newjobs is not empty %}
+        <p>Here are all jobs you posted</p>
+            {% for newjob in newjobs %}
+            <h3>Job</h3>
+            <ul>
+                <li>{{ newjob.getTitle}}</li>
+                <li>{{ newjob.getDescription}}</li>
+                <li>{{ newjob.getName}}</li>
+                <li>{{ newjob.getEmail}}</li>
+                <li>{{ newjob.getPhone}}</li>
+           </ul>
+           {% endfor %}
+      {% endif %}
+
+    </div>
+
+</body>
+</html>
